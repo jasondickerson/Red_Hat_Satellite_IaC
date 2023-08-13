@@ -1,0 +1,9 @@
+all:
+  hosts:
+  children:
+    satellites:
+      hosts:
+        sattest.test.org:
+          ansible_connection: local
+    capsules:
+      hosts:

@@ -1,0 +1,129 @@
+---
+hostgroups:
+#   - name: RHEL6DEVHG
+#     lifecycle_environment: DEV6
+#     content_view: RHEL6FULL
+#     content_source: "{{ inventory_hostname }}"
+# #    environment: "KT_Default_Organization_DEV6_RHEL6FULL_11"
+# #    puppet_proxy: sattest.test.org
+# #    puppet_ca_proxy: sattest.test.org
+# #    environment: ""
+#     puppet_proxy: ""
+#     puppet_ca_proxy: ""
+#     openscap_proxy: "{{ inventory_hostname }}"
+#     domain: "test.org"
+#     subnet: "test.org"
+#     architecture: x86_64
+#     operatingsystem: "RedHat 6.10"
+#     kickstart_repository: "Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.10"
+#     ptable: "Kickstart default"
+#     pxe_loader: "PXELinux BIOS"
+#     parameters:
+#       - name: "enable-puppet4"
+#         parameter_type: boolean
+#         value: true
+#       - name: "LOP_global_package_exclude"
+#         parameter_type: string
+#         value: "sles-release wvdial wvstreams java-1.7.1-ibm MozillaFirefox MozillaFirefox-translations jack-32bit"
+#       - name: "LOP_global_repo_exclude"
+#         parameter_type: string
+#         value: "epeltest extrastest"
+#     locations:
+#       - "Default Location"
+#     activation_keys: "RHEL6-DEV-AK"
+
+  - name: RHEL7DEVHG
+    lifecycle_environment: DEV7
+    content_view: RHEL7FULL
+    content_source: "{{ inventory_hostname }}"
+#    environment: "KT_Default_Organization_DEV7_RHEL7FULL_9"
+#    puppet_proxy: sattest.test.org
+#    puppet_ca_proxy: sattest.test.org
+#    environment: ""
+    puppet_proxy: ""
+    puppet_ca_proxy: ""
+    openscap_proxy: "{{ inventory_hostname }}"
+    domain: "test.org"
+    subnet: "test.org"
+    architecture: x86_64
+    operatingsystem: "RedHat 7.9"
+    kickstart_repository: "Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.9"
+    ptable: "Kickstart default"
+    pxe_loader: "PXELinux BIOS"
+    # parameters:
+    #   - name: "enable-puppet4"
+    #     parameter_type: boolean
+    #     value: true
+    #   - name: "LOP_global_package_exclude"
+    #     parameter_type: string
+    #     value: "sles-release wvdial wvstreams java-1.7.1-ibm MozillaFirefox MozillaFirefox-translations jack-32bit"
+    #   - name: "LOP_global_repo_exclude"
+    #     parameter_type: string
+    #     value: "epeltest extrastest"
+    locations:
+      - "Default Location"
+    activation_keys: "RHEL7-DEV-AK"
+
+  - name: RHEL8DEVHG
+    lifecycle_environment: DEV8
+    content_view: RHEL8FULL
+    content_source: "{{ inventory_hostname }}"
+#    environment: "KT_Default_Organization_DEV8_RHEL8FULL_16"
+#    puppet_proxy: sattest.test.org
+#    puppet_ca_proxy: sattest.test.org
+#    environment: ""
+    puppet_proxy: ""
+    puppet_ca_proxy: ""
+    openscap_proxy: "{{ inventory_hostname }}"
+    domain: "test.org"
+    subnet: "test.org"
+    architecture: x86_64
+    operatingsystem: "RHEL 8.8"
+    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.8"
+    ptable: "Kickstart default"
+    pxe_loader: "PXELinux BIOS"
+    # parameters:
+    #   - name: "enable-puppet4"
+    #     parameter_type: boolean
+    #     value: true
+    #   - name: "LOP_global_package_exclude"
+    #     parameter_type: string
+    #     value: "sles-release wvdial wvstreams java-1.7.1-ibm MozillaFirefox MozillaFirefox-translations jack-32bit"
+    #   - name: "LOP_global_repo_exclude"
+    #     parameter_type: string
+    #     value: "epeltest extrastest"
+    locations:
+      - "Default Location"
+    activation_keys: "RHEL8-DEV-AK"
+
+  - name: RHEL9DEVHG
+    lifecycle_environment: DEV9
+    content_view: RHEL9FULL
+    content_source: "{{ inventory_hostname }}"
+#    environment: "KT_Default_Organization_DEV8_RHEL8FULL_16"
+#    puppet_proxy: sattest.test.org
+#    puppet_ca_proxy: sattest.test.org
+#    environment: ""
+    puppet_proxy: ""
+    puppet_ca_proxy: ""
+    openscap_proxy: "{{ inventory_hostname }}"
+    domain: "test.org"
+    subnet: "test.org"
+    architecture: x86_64
+    operatingsystem: "RedHat 9.2"
+    kickstart_repository: "Red Hat Enterprise Linux 9 for x86_64 - BaseOS Kickstart 9.2"
+    ptable: "Kickstart default"
+    pxe_loader: "PXELinux BIOS"
+    # parameters:
+    #   - name: "enable-puppet4"
+    #     parameter_type: boolean
+    #     value: false
+    #   - name: "LOP_global_package_exclude"
+    #     parameter_type: string
+    #     value: "sles-release wvdial wvstreams java-1.7.1-ibm MozillaFirefox MozillaFirefox-translations jack-32bit"
+    #   - name: "LOP_global_repo_exclude"
+    #     parameter_type: string
+    #     value: "epeltest extrastest"
+    locations:
+      - "Default Location"
+    activation_keys: "RHEL9-DEV-AK"

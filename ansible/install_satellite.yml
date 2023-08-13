@@ -1,0 +1,53 @@
+---
+- name: Install Satellite
+  hosts: satellites
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install required packages
+      ansible.builtin.package:
+        name:
+          - satellite
+          - chrony
+          - sos
+          - bash-completion
+          - tree
+          - vim-enhanced
+        state: latest
+
+    - name: Download the Satellite 6 Queue Checker script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/jasondickerson/sat6-queue-check/master/sat6-queue-check.bash
+        dest: /root/sat6-queue-check.bash
+        mode: '0750'
+
+  roles:
+    - role: redhat.rhel_system_roles.firewall
+    - role: redhat.satellite_operations.installer
+
+  tasks:
+    - name: Manage manifest
+      redhat.satellite.redhat_manifest:
+        name: "{{ inventory_hostname }}"
+        username: "{{ red_hat_portal_username }}"
+        password: "{{ red_hat_portal_password }}"
+        content_access_mode: org_environment
+        pool_id: "{{ subscription_pool_id }}"
+        quantity: 10
+        path: "/root/{{ inventory_hostname }}_manifest.zip"
+      register: manifest
+
+    - name: Store Manifest UUID
+      ansible.builtin.copy:
+        content: "{{ manifest.uuid }}"
+        dest: "/root/{{ inventory_hostname }}_manifest_uuid.txt"
+        mode: '0640'
+
+    - name: "Upload the manifest"
+      redhat.satellite.subscription_manifest:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        organization: "{{ satellite_organization }}"
+        state: present
+        manifest_path: "/root/{{ inventory_hostname }}_manifest.zip"

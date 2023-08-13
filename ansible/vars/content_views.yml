@@ -1,0 +1,105 @@
+---
+content_views:
+  # - name: RHEL6FULL
+  #   lce:
+  #     - Library
+  #     - DEV6
+  #   repositories:
+  #     - name: "EPEL 6"
+  #       product: "EPEL 6"
+  #     - name: "Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.10"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Enterprise Linux 6 Server - Extras RPMs x86_64"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6Server"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Enterprise Linux 6 Server RPMs x86_64 6Server"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6Server"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Satellite Tools 6.8 for RHEL 6 Server RPMs x86_64"
+  #       product: "Red Hat Enterprise Linux Server"
+  #     - name: "Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server"
+  #       product: "Red Hat Software Collections (for RHEL Server)"
+  #   auto_publish: no
+  #   solve_dependencies: no
+  #   composite: no
+
+  - name: RHEL7FULL
+    lce:
+      - Library
+      - DEV7
+    repositories:
+      - name: "EPEL 7"
+        product: "EPEL 7"
+      - name: "Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.9"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Enterprise Linux 7 Server - Extras RPMs x86_64"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7Server"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Satellite Client 6 for RHEL 7 Server RPMs x86_64"
+        product: "Red Hat Enterprise Linux Server"
+      - name: "Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server"
+        product: "Red Hat Software Collections (for RHEL Server)"
+    auto_publish: false
+    solve_dependencies: false
+    composite: false
+
+  - name: RHEL8FULL
+    lce:
+      - Library
+      - DEV8
+    repositories:
+      - name: "EPEL 8"
+        product: "EPEL 8"
+      - name: "EPEL Modular 8"
+        product: "EPEL 8"
+      - name: "Red Hat CodeReady Linux Builder for RHEL 8 x86_64 RPMs 8"
+        product: "Red Hat CodeReady Linux Builder for x86_64"
+      - name: "Red Hat Enterprise Linux 8 for x86_64 - AppStream Kickstart 8.8"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 8 for x86_64 - AppStream RPMs 8"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.8"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS RPMs 8"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 8 for x86_64 - Supplementary RPMs 8"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Satellite Client 6 for RHEL 8 x86_64 RPMs"
+        product: "Red Hat Enterprise Linux for x86_64"
+    auto_publish: false
+    solve_dependencies: false
+    composite: false
+
+  - name: RHEL9FULL
+    lce:
+      - Library
+      - DEV9
+    repositories:
+      - name: "EPEL 9"
+        product: "EPEL 9"
+      - name: "Red Hat CodeReady Linux Builder for RHEL 9 x86_64 RPMs 9"
+        product: "Red Hat CodeReady Linux Builder for x86_64"
+      - name: "Red Hat Enterprise Linux 9 for x86_64 - AppStream Kickstart 9.2"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 9 for x86_64 - AppStream RPMs 9"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 9 for x86_64 - BaseOS Kickstart 9.2"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 9 for x86_64 - BaseOS RPMs 9"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Enterprise Linux 9 for x86_64 - Supplementary RPMs 9"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Satellite Client 6 for RHEL 9 x86_64 RPMs"
+        product: "Red Hat Enterprise Linux for x86_64"
+      - name: "Red Hat Ansible Automation Platform 2.4 for RHEL 9 x86_64 RPMs"
+        product: "Red Hat Ansible Automation Platform"
+    auto_publish: false
+    solve_dependencies: false
+    composite: false

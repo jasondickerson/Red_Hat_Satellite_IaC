@@ -1,0 +1,65 @@
+---
+subnets:
+#   - name: "test.org_static"
+#     description: ""
+#     network_type: "IPv4"
+#     dns_primary: "192.168.100.2"
+#     dns_secondary: ""
+#     domains:
+#       - "test.org"
+#     gateway: "192.168.100.1"
+#     network: "192.168.100.0"
+#     cidr: "24"
+#     mask: "255.255.255.0"
+#     from_ip: ""
+#     to_ip: ""
+#     boot_mode: "Static"
+#     ipam: "None"
+#     dhcp_proxy: ""
+#     httpboot_proxy: ""
+#     tftp_proxy: "{{ inventory_hostname }}"
+#     discovery_proxy: "{{ inventory_hostname }}"
+#     dns_proxy: ""
+#     template_proxy: "{{ inventory_hostname }}"
+#     remote_execution_proxies:
+#       - "{{ inventory_hostname }}"
+#     externalipam_proxy: ""
+# #    externalipam_group:
+# #    vlanid:
+#     mtu: 1500
+#     organizations:
+#       - "Default Organization"
+#     locations:
+#       - "Default Location"
+
+  - name: "test.org"
+    description: ""
+    network_type: "IPv4"
+    dns_primary: "192.168.100.2"
+    dns_secondary: ""
+    domains:
+      - "test.org"
+    gateway: "192.168.100.1"
+    network: "192.168.100.0"
+    cidr: "24"
+    mask: "255.255.255.0"
+    from_ip: "192.168.100.100"
+    to_ip: "192.168.100.150"
+    boot_mode: "DHCP"
+    ipam: "DHCP"
+    dhcp_proxy: "{{ inventory_hostname }}"
+    httpboot_proxy: ""
+    tftp_proxy: "{{ inventory_hostname }}"
+    discovery_proxy: "{{ inventory_hostname }}"
+    dns_proxy: "{{ inventory_hostname }}"
+    template_proxy: "{{ inventory_hostname }}"
+    remote_execution_proxies:
+      - "{{ inventory_hostname }}"
+    externalipam_proxy: ""
+#    externalipam_group:
+#    vlanid:
+    mtu: 1500
+    organizations:
+      - "Default Organization"
+    locations:
+      - "Default Location"

@@ -1,0 +1,8 @@
+---
+sync_plans:
+  - name: Sync All
+    description: "Sync All repositories"
+    enabled: false
+    interval: weekly
+    sync_date: 2021-05-09 11:00:00 UTC
+    products: "{{ products | map(attribute='name') | list }}"

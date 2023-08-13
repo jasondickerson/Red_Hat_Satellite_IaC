@@ -1,0 +1,123 @@
+---
+activation_keys:
+  # - name: "RHEL6-DEV-AK"
+  #   lifecycle_environment: "DEV6"
+  #   content_view: "RHEL6FULL"
+  #   unlimited_hosts: true
+  #   content_overrides:
+  #     - label: Default_Organization_EPEL_7_epel-7
+  #       override: disabled
+  #     - label: Default_Organization_EPEL_8_EPEL_8
+  #       override: disabled
+  #     - label: Default_Organization_EPEL_8_EPEL_Modular_8
+  #       override: disabled
+  #     - label: Default_Organization_EPEL_9_EPEL_9
+  #       override: disabled
+  #     - label: rhel-6-server-extras-rpms
+  #       override: enabled
+  #     - label: rhel-6-server-optional-rpms
+  #       override: enabled
+  #     - label: rhel-6-server-supplementary-rpms
+  #       override: enabled
+  #     - label: rhel-7-server-rpms
+  #       override: disabled
+  #     - label: rhel-8-for-x86_64-appstream-rpms
+  #       override: disabled
+  #     - label: rhel-8-for-x86_64-baseos-rpms
+  #       override: disabled
+  #     - label: rhel-9-for-x86_64-appstream-rpms
+  #       override: disabled
+  #     - label: rhel-9-for-x86_64-baseos-rpms
+  #       override: disabled
+  #     - label: rhel-6-server-satellite-tools-6.8-rpms
+  #       override: enabled
+  #     - label: rhel-server-rhscl-6-rpms
+  #       override: enabled
+
+  - name: "RHEL7-DEV-AK"
+    lifecycle_environment: "DEV7"
+    content_view: "RHEL7FULL"
+    unlimited_hosts: true
+    content_overrides:
+      # - label: Default_Organization_epel-6_epel-6
+      #   override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_8
+        override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_Modular_8
+        override: disabled
+      - label: Default_Organization_EPEL_9_EPEL_9
+        override: disabled
+      # - label: rhel-6-server-rpms
+      #   override: disabled
+      - label: rhel-7-server-extras-rpms
+        override: enabled
+      - label: rhel-7-server-optional-rpms
+        override: enabled
+      - label: rhel-7-server-supplementary-rpms
+        override: enabled
+      - label: rhel-8-for-x86_64-appstream-rpms
+        override: disabled
+      - label: rhel-8-for-x86_64-baseos-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-appstream-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-baseos-rpms
+        override: disabled
+      - label: rhel-7-server-satellite-client-6-rpms
+        override: enabled
+      - label: rhel-server-rhscl-7-rpms
+        override: enabled
+
+  - name: "RHEL8-DEV-AK"
+    lifecycle_environment: "DEV8"
+    content_view: "RHEL8FULL"
+    unlimited_hosts: true
+    content_overrides:
+      # - label: Default_Organization_epel-6_epel-6
+      #   override: disabled
+      - label: Default_Organization_EPEL_7_epel-7
+        override: disabled
+      - label: Default_Organization_EPEL_9_EPEL_9
+        override: disabled
+      - label: codeready-builder-for-rhel-8-x86_64-rpms
+        override: enabled
+      # - label: rhel-6-server-rpms
+      #   override: disabled
+      - label: rhel-7-server-rpms
+        override: disabled
+      - label: rhel-8-for-x86_64-supplementary-rpms
+        override: enabled
+      - label: rhel-9-for-x86_64-appstream-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-baseos-rpms
+        override: disabled
+      - label: satellite-client-6-for-rhel-8-x86_64-rpms
+        override: enabled
+
+  - name: "RHEL9-DEV-AK"
+    lifecycle_environment: "DEV9"
+    content_view: "RHEL9FULL"
+    unlimited_hosts: true
+    content_overrides:
+      # - label: Default_Organization_epel-6_epel-6
+      #   override: disabled
+      - label: Default_Organization_EPEL_7_epel-7
+        override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_8
+        override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_Modular_8
+        override: disabled
+      - label: codeready-builder-for-rhel-9-x86_64-rpms
+        override: enabled
+      - label: rhel-8-for-x86_64-appstream-rpms
+        override: disabled
+      - label: rhel-8-for-x86_64-baseos-rpms
+        override: disabled
+      # - label: rhel-6-server-rpms
+      #   override: disabled
+      - label: rhel-7-server-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-supplementary-rpms
+        override: enabled
+      - label: satellite-client-6-for-rhel-9-x86_64-rpms
+        override: enabled

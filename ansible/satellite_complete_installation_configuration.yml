@@ -1,0 +1,20 @@
+---
+- name: Install and Configure Satellite
+  hosts: satellites
+  gather_facts: false
+
+- name: Install Satellite
+  import_playbook: install_satellite.yml
+  
+- name: Maintain Main Satellite Content
+  import_playbook: maintain_content.yml
+
+- name: Maintain Activation Keys
+  import_playbook: maintain_activation_keys.yml
+
+- name: Maintain Satellite Provisioning Configuration
+  import_playbook: maintain_provisioning.yml
+
+- name: Set Default Root Password for Hostgroups
+  import_playbook: hostgroup_set_default_root_password.yml
+  

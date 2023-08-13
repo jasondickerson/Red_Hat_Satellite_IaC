@@ -1,0 +1,7 @@
+---
+satellite_organization: "Default Organization"
+satellite_username: "{{ vault_satellite_username }}"
+satellite_password: "{{ vault_satellite_password }}"
+hostgroup_default_root_password: "{{ vault_hostgroup_default_root_password }}"
+red_hat_portal_username: "{{ vault_red_hat_portal_username }}"
+red_hat_portal_password: "{{ vault_red_hat_portal_password }}"

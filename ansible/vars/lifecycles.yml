@@ -1,0 +1,10 @@
+---
+lifecycles:
+  - name: DEV6
+    prior: Library
+  - name: DEV7
+    prior: Library
+  - name: DEV8
+    prior: Library
+  - name: DEV9
+    prior: Library

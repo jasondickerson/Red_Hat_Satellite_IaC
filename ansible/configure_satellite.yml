@@ -1,0 +1,13 @@
+---
+- name: Configure Satellite
+  hosts: satellites
+  gather_facts: false
+
+- name: Maintain Main Satellite Content
+  import_playbook: maintain_content.yml
+
+- name: Maintain Activation Keys
+  import_playbook: maintain_activation_keys.yml
+
+- name: Maintain Satellite Provisioning Configuration
+  import_playbook: maintain_provisioning.yml

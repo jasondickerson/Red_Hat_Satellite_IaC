@@ -1,0 +1,8 @@
+---
+domains:
+  - name: "test.org"
+    dns_proxy: "{{ inventory_hostname }}"
+    locations:
+      - "Default Location"
+    organizations:
+      - "{{ satellite_organization }}"

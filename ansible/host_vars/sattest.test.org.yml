@@ -1,0 +1,38 @@
+---
+firewall:
+  - service: RH-Satellite-6
+    state: enabled
+  - service: cockpit
+    state: enabled
+  - service: dhcp
+    state: enabled
+  - service: dhcpv6-client
+    state: enabled
+  - service: dns
+    state: enabled
+  - service: ssh
+    state: enabled
+  - service: tftp
+    state: enabled
+
+subscription_pool_id: <Your Subscription pool id here>
+
+satellite_installer_scenario: satellite
+satellite_installer_options:
+  - '--foreman-initial-admin-username admin'
+  - '--foreman-initial-admin-password changeme'
+  - '--foreman-proxy-dns true'
+  - '--foreman-proxy-dns-interface enp1s0'
+  - '--foreman-proxy-dns-zone test.org'
+  - '--foreman-proxy-dns-forwarders 192.168.100.1'
+  - '--foreman-proxy-dns-reverse 100.168.192.in-addr.arpa'
+  - '--foreman-proxy-dhcp true'
+  - '--foreman-proxy-dhcp-interface enp1s0'
+  - '--foreman-proxy-dhcp-range "192.168.100.100 192.168.100.150"'
+  - '--foreman-proxy-dhcp-gateway 192.168.100.1'
+  - '--foreman-proxy-dhcp-nameservers 192.168.100.2'
+  - '--foreman-proxy-tftp true'
+  - '--foreman-proxy-tftp-servername {{ inventory_hostname }}'
+  - '--foreman-proxy-http true'
+  - '--foreman-proxy-templates true'
+  - '--register-with-insights'

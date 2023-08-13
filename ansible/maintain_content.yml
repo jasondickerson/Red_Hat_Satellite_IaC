@@ -1,0 +1,97 @@
+---
+- name: Maintain Satellite Content
+  hosts: satellites
+  gather_facts: no
+  vars_files:
+    - vars/products.yml
+    - vars/sync_plans.yml
+    - vars/lifecycles.yml
+    - vars/content_views.yml
+
+  pre_tasks:
+    - name: Refresh manifest
+      redhat.satellite.subscription_manifest:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        organization: "{{ satellite_organization }}"
+        state: refreshed
+      tags: manifest
+
+    - name: Manage GPG keys
+      redhat.satellite.content_credential:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        organization: "{{ satellite_organization }}"
+        content_type: gpg_key
+        name: "{{ item.gpg_key }}"
+        content: "{{ lookup('url', item.gpg_url) }}"
+      loop: "{{ products }}"
+      when: item.gpg_key is defined
+      tags: gpgkeys
+
+    - name: Set Default Download Policy
+      redhat.satellite.setting:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        name: "default_download_policy"
+        value: "on_demand"
+      tags: downloadpolicy
+
+  roles:
+    - role: redhat.satellite.repositories
+      vars:
+        satellite_server_url: "https://{{ inventory_hostname }}"
+        satellite_products: "{{ products }}"
+      tags: enablerepos
+
+    - role: redhat.satellite.sync_plans
+      vars:
+        satellite_server_url: "https://{{ inventory_hostname }}"
+        satellite_sync_plans: "{{ sync_plans }}"
+      tags: syncplan
+
+    - role: redhat.satellite.lifecycle_environments
+      vars:
+        satellite_server_url: "https://{{ inventory_hostname }}"
+        satellite_lifecycle_environments: "{{ lifecycles }}"
+      tags: lifecycles
+
+  tasks:
+    - name: Sync Products
+      redhat.satellite.repository_sync:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        product: "{{ item.name }}"
+        organization: "{{ satellite_organization }}"
+      loop: "{{ products }}"
+      tags: sync
+
+    - name: Manage Content Views
+      redhat.satellite.content_view:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        organization: "{{ satellite_organization }}"
+        name: "{{ item.name }}"
+        repositories: "{{ item.repositories }}"
+        auto_publish: "{{ item.auto_publish }}"
+        solve_dependencies: "{{ item.solve_dependencies }}"
+        composite: "{{ item.composite }}"
+      loop: "{{ content_views }}"
+      tags: cvs
+
+    - name: Publish Content Views and Promote to Lifecycle Environments
+      redhat.satellite.content_view_version:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "https://{{ inventory_hostname }}"
+        content_view: "{{ item.name }}"
+        organization: "{{ satellite_organization }}"
+        lifecycle_environments: "{{ item.lce }}"
+      loop: "{{ content_views }}"
+      tags: pubpromote
+
