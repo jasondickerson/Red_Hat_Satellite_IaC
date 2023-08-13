@@ -29,26 +29,25 @@ I chose to deploy into the domain test.org.
 To use this code, you need to customize the variable files for your needs.  The following should be reviewed and altered as necessary:
 
     Red_Hat_Satellite_IaC/
-    ├── ansible
-    │   ├── content_cleanup.yml (set how many old versions of Content Views to Keep)
-    │   ├── group_vars
-    │   │   └── satellites
-    │   │       ├── main.yml (set your organization)
-    │   │       └── vault.yml (There are several variables to set according to your needs)
-    │   ├── host_vars
-    │   │   └── sattest.test.org.yml (Your subscription pool id for your manifest, and satellite installer options)
-    │   ├── inventory.yml (Your satellite FQDN must be in the satellites group, adjust the host_vars filename to match as well)
-    │   ├── secret (This file contains your secret to decrypt your ansible vault in plain text)
-    │   └── vars ( all of these files can be used as is, to setup a Standard Operating Environment Red Hat Satellite, but may be customized)
-    │       ├── actkeys.yml
-    │       ├── content_views.yml
-    │       ├── domains.yml
-    │       ├── hostgroups.yml
-    │       ├── lifecycles.yml
-    │       ├── obsoletes.yml
-    │       ├── products.yml
-    │       ├── subnets.yml
-    │       └── sync_plans.yml
+    ├── content_cleanup.yml (set how many old versions of Content Views to Keep)
+    ├── group_vars
+    │   └── satellites
+    │       ├── main.yml (set your organization)
+    │       └── vault.yml (There are several variables to set according to your needs)
+    ├── host_vars
+    │   └── sattest.test.org.yml (Your subscription pool id for your manifest, and satellite installer options)
+    ├── inventory.yml (Your satellite FQDN must be in the satellites group, adjust the host_vars filename to match as well)
+    ├── secret (This file contains your secret to decrypt your ansible vault in plain text)
+    └── vars ( all of these files can be used as is, to setup a Standard Operating Environment Red Hat Satellite, but may be customized)
+        ├── actkeys.yml
+        ├── content_views.yml
+        ├── domains.yml
+        ├── hostgroups.yml
+        ├── lifecycles.yml
+        ├── obsoletes.yml
+        ├── products.yml
+        ├── subnets.yml
+        └── sync_plans.yml
 
 ### Running the automation
 
