@@ -1,5 +1,6 @@
 ---
 content_views:
+  ## RHEL 6 is no longer supported
   # - name: RHEL6FULL
   #   lce:
   #     - Library

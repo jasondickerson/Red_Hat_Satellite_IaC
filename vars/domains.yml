@@ -3,6 +3,6 @@ domains:
   - name: "test.org"
     dns_proxy: "{{ inventory_hostname }}"
     locations:
-      - "Default Location"
+      - "{{ satellite_location }}"
     organizations:
       - "{{ satellite_organization }}"

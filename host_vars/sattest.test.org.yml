@@ -19,8 +19,10 @@ subscription_pool_id: <Your Subscription pool id here>
 
 satellite_installer_scenario: satellite
 satellite_installer_options:
-  - '--foreman-initial-admin-username admin'
-  - '--foreman-initial-admin-password changeme'
+  - '--foreman-initial-admin-username {{ satellite_username }}'
+  - '--foreman-initial-admin-password {{ satellite_password }}'
+  - '--foreman-initial-organization "{{ satellite_organization }}"'
+  - '--foreman-initial-location "{{ satellite_location }}"'
   - '--foreman-proxy-dns true'
   - '--foreman-proxy-dns-interface enp1s0'
   - '--foreman-proxy-dns-zone test.org'

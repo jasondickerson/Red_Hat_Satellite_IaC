@@ -12,15 +12,13 @@ While the code works, this README is a work in progress.  Full instructions will
 
 ## Lab Environment
 
-My test Lab is libvirt on Fedora 38.  I created a subnet 192.168.100.0/24 with DHCP disabled, and NAT forwarding.  The Gateway is 192.168.100.1, and the Satellite is 192.168.100.2.  For the Red Hat Satellite installation, the DHCP pool is the 192.168.100.100 - 150.  I started with a Minimal install of RHEL 8.8, registered to Red Hat Subscription Management on the Internet.  My Red Hat Satellite VM is 4 CPU x 20GB RAM with a single 150GB disk.  Given Red Hat Satellite can take up quite a bit of storage, I went with the following partition layout:
+My test Lab is libvirt on Fedora 38.  I created a subnet 192.168.100.0/24 with DHCP disabled, and NAT forwarding.  The Gateway is 192.168.100.1, and the Satellite is 192.168.100.2.  For the Red Hat Satellite installation, the DHCP pool is the 192.168.100.100 - 150.  I deployed the Red Hat Satellite and subsequent clients into the test.org domain.  I started with a Minimal install of RHEL 8.8, registered to Red Hat Subscription Management on the Internet.  My Red Hat Satellite VM is 4 CPU x 20GB RAM with a single 150GB disk.  Given Red Hat Satellite can take up quite a bit of storage, I went with the following partition layout:
 
 - /boot      1 GB ext4
 - /     139.14 GB ext4
 - swap     9.9 GB
 
 I used the Red Hat Enterprise Linux GUI installation DVD to setup the default partitions, removed /home and added the space to /.  You may wonder why I switched from xfs to ext4.  In the past my satellite filled the disk.  I found with xfs, once you grow the file system, you cannot shrink it again.  However, with ext4 you can!  Given this is a lab I use quite a bit.  I chose to keep my options open by using ext4.
-
-I chose to deploy into the domain test.org.
 
 ## Quick How To
 
@@ -120,7 +118,7 @@ This code can not only be used to initially install Red Hat Satellite, but also 
     autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
     set modeline
 
-### How do I find the subscription poo id(s) to add to my manifest?
+### How do I find the subscription pool id(s) to add to my manifest?
 
 Use subscription-manager to search your subscriptions:
 

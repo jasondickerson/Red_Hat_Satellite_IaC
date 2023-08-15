@@ -24,13 +24,14 @@ subnets:
 #     remote_execution_proxies:
 #       - "{{ inventory_hostname }}"
 #     externalipam_proxy: ""
-# #    externalipam_group:
-# #    vlanid:
+#     ## Optional Parameters
+#     # externalipam_group:
+#     # vlanid:
 #     mtu: 1500
 #     organizations:
-#       - "Default Organization"
+#       - "{{ satellite_organization }}"
 #     locations:
-#       - "Default Location"
+#       - "{{ satellite_location }}"
 
   - name: "test.org"
     description: ""
@@ -56,10 +57,11 @@ subnets:
     remote_execution_proxies:
       - "{{ inventory_hostname }}"
     externalipam_proxy: ""
-#    externalipam_group:
-#    vlanid:
+    ## Optional Parameters
+    # externalipam_group:
+    # vlanid:
     mtu: 1500
     organizations:
-      - "Default Organization"
+      - "{{ satellite_organization }}"
     locations:
-      - "Default Location"
+      - "{{ satellite_location }}"

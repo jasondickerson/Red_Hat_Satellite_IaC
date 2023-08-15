@@ -1,11 +1,12 @@
 ---
 activation_keys:
+  ## RHEL 6 is no longer supported
   # - name: "RHEL6-DEV-AK"
   #   lifecycle_environment: "DEV6"
   #   content_view: "RHEL6FULL"
   #   unlimited_hosts: true
   #   content_overrides:
-  #     - label: Default_Organization_EPEL_7_epel-7
+  #     - label: Default_Organization_EPEL_7_EPEL_7
   #       override: disabled
   #     - label: Default_Organization_EPEL_8_EPEL_8
   #       override: disabled
@@ -39,7 +40,10 @@ activation_keys:
     content_view: "RHEL7FULL"
     unlimited_hosts: true
     content_overrides:
+      ## RHEL 6 is no longer supported
       # - label: Default_Organization_epel-6_epel-6
+      #   override: disabled
+      # - label: rhel-6-server-rpms
       #   override: disabled
       - label: Default_Organization_EPEL_8_EPEL_8
         override: disabled
@@ -47,8 +51,6 @@ activation_keys:
         override: disabled
       - label: Default_Organization_EPEL_9_EPEL_9
         override: disabled
-      # - label: rhel-6-server-rpms
-      #   override: disabled
       - label: rhel-7-server-extras-rpms
         override: enabled
       - label: rhel-7-server-optional-rpms
@@ -73,16 +75,17 @@ activation_keys:
     content_view: "RHEL8FULL"
     unlimited_hosts: true
     content_overrides:
+      ## RHEL 6 is no longer supported
       # - label: Default_Organization_epel-6_epel-6
       #   override: disabled
-      - label: Default_Organization_EPEL_7_epel-7
+      # - label: rhel-6-server-rpms
+      #   override: disabled
+      - label: Default_Organization_EPEL_7_EPEL_7
         override: disabled
       - label: Default_Organization_EPEL_9_EPEL_9
         override: disabled
       - label: codeready-builder-for-rhel-8-x86_64-rpms
         override: enabled
-      # - label: rhel-6-server-rpms
-      #   override: disabled
       - label: rhel-7-server-rpms
         override: disabled
       - label: rhel-8-for-x86_64-supplementary-rpms
@@ -99,9 +102,12 @@ activation_keys:
     content_view: "RHEL9FULL"
     unlimited_hosts: true
     content_overrides:
+      ## RHEL 6 is no longer supported
       # - label: Default_Organization_epel-6_epel-6
       #   override: disabled
-      - label: Default_Organization_EPEL_7_epel-7
+      # - label: rhel-6-server-rpms
+      #   override: disabled
+      - label: Default_Organization_EPEL_7_EPEL_7
         override: disabled
       - label: Default_Organization_EPEL_8_EPEL_8
         override: disabled
@@ -113,8 +119,6 @@ activation_keys:
         override: disabled
       - label: rhel-8-for-x86_64-baseos-rpms
         override: disabled
-      # - label: rhel-6-server-rpms
-      #   override: disabled
       - label: rhel-7-server-rpms
         override: disabled
       - label: rhel-9-for-x86_64-supplementary-rpms
