@@ -125,3 +125,27 @@ activation_keys:
         override: enabled
       - label: satellite-client-6-for-rhel-9-x86_64-rpms
         override: enabled
+
+  - name: "Capsules-AK"
+    lifecycle_environment: "DEV8"
+    content_view: "Capsules"
+    unlimited_hosts: true
+    content_overrides:
+      - label: Default_Organization_EPEL_7_EPEL_7
+        override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_8
+        override: disabled
+      - label: Default_Organization_EPEL_8_EPEL_Modular_8
+        override: disabled
+      - label: Default_Organization_EPEL_9_EPEL_9
+        override: disabled
+      - label: rhel-7-server-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-appstream-rpms
+        override: disabled
+      - label: rhel-9-for-x86_64-baseos-rpms
+        override: disabled
+      - label: satellite-capsule-6.13-for-rhel-8-x86_64-rpms
+        override: enabled
+      - label: satellite-maintenance-6.13-for-rhel-8-x86_64-rpms
+        override: enabled

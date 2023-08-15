@@ -68,6 +68,8 @@ products:
       - name: Red Hat Enterprise Linux 9 for x86_64 - BaseOS (Kickstart)
         releasever: 9.2
       - name: Red Hat Satellite Client 6 for RHEL 9 x86_64 (RPMs)
+      ## Example of how to bring in the Red Hat Satellite Capsule repository
+      - name: Red Hat Satellite Maintenance 6.13 for RHEL 8 x86_64 (RPMs)
   - name: "Red Hat CodeReady Linux Builder for x86_64"
     repository_sets:
       - name: "Red Hat CodeReady Linux Builder for RHEL 8 x86_64 (RPMs)"
@@ -84,6 +86,7 @@ products:
   #   repository_sets:
   #     - name: Red Hat Satellite Capsule 6.13 for RHEL 8 x86_64 (RPMs)
   #       basearch: x86_64
+  ## RHEL 6 is no longer supported
   ## Example of how to bring in Developer Toolset repos
   # - name: Red Hat Developer Toolset (for RHEL Server)
   #   repository_sets:
@@ -93,7 +96,7 @@ products:
   #     - name: Red Hat Developer Toolset RPMs for Red Hat Enterprise Linux 6 Server
   #       releasever: 6Server
   #       basearch: x86_64
-  ## RHEL 6 is no longer supported
+  ## Example of EPEL 6
   # - name: "EPEL 6"
   #   label: "epel-6"
   #   gpg_key: "EPEL 6 GPG"
@@ -153,3 +156,7 @@ products:
   - name: Red Hat Ansible Automation Platform
     repository_sets:
       - name: Red Hat Ansible Automation Platform 2.4 for RHEL 9 x86_64 (RPMs)
+  ## Example of how to bring in the Red Hat Satellite Capsule repository
+  - name: Red Hat Satellite Capsule
+    repository_sets:
+      - name: Red Hat Satellite Capsule 6.13 for RHEL 8 x86_64 (RPMs)
