@@ -124,3 +124,34 @@ hostgroups:
     locations:
       - "{{ satellite_location }}"
     activation_keys: "RHEL9-DEV-AK"
+
+  - name: CapsulesHG
+    lifecycle_environment: DEV8
+    content_view: Capsules
+    content_source: "{{ inventory_hostname }}"
+    ## Puppet support will be removed in future versions of Red Hat Satellite
+    # environment: "KT_Default_Organization_DEV8_RHEL8FULL_16"
+    # puppet_proxy: sattest.test.org
+    # puppet_ca_proxy: sattest.test.org
+    openscap_proxy: "{{ inventory_hostname }}"
+    domain: "test.org"
+    subnet: "test.org"
+    architecture: x86_64
+    operatingsystem: "RHEL 8.8"
+    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.8"
+    ptable: "Kickstart default"
+    pxe_loader: "PXELinux BIOS"
+    ## Example of adding or overriding parameters
+    # parameters:
+    #   - name: "enable-puppet4"
+    #     parameter_type: boolean
+    #     value: true
+    #   - name: "LOP_global_package_exclude"
+    #     parameter_type: string
+    #     value: "sles-release wvdial wvstreams java-1.7.1-ibm MozillaFirefox MozillaFirefox-translations jack-32bit"
+    #   - name: "LOP_global_repo_exclude"
+    #     parameter_type: string
+    #     value: "epeltest extrastest"
+    locations:
+      - "{{ satellite_location }}"
+    activation_keys: "Capsules-AK"
