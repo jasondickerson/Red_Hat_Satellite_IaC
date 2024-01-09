@@ -2,13 +2,13 @@
 
 cd /root
 
-# Configure Satellite 6.13 repositories
+# Configure Satellite 6.14 repositories
 subscription-manager repos --disable "*"
 
 subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms \
 --enable=rhel-8-for-x86_64-appstream-rpms \
---enable=satellite-6.13-for-rhel-8-x86_64-rpms \
---enable=satellite-maintenance-6.13-for-rhel-8-x86_64-rpms
+--enable=satellite-6.14-for-rhel-8-x86_64-rpms \
+--enable=satellite-maintenance-6.14-for-rhel-8-x86_64-rpms
 
 dnf -y module enable satellite:el8
 

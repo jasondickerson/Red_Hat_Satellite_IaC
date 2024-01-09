@@ -12,9 +12,11 @@
 - name: Maintain Activation Keys
   import_playbook: maintain_activation_keys.yml
 
+- name: Maintain Locations
+  import_playbook: maintain_locations.yml
+
 - name: Maintain Satellite Provisioning Configuration
   import_playbook: maintain_provisioning.yml
 
 - name: Set Default Root Password for Hostgroups
   import_playbook: hostgroup_set_default_root_password.yml
-  

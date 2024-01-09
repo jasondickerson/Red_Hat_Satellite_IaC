@@ -1,0 +1,13 @@
+---
+- name: Maintain Locations
+  hosts: satellites
+  gather_facts: false
+  vars_files:
+    - vars/locations.yml
+
+  roles:
+    - role: redhat.satellite.locations
+      vars:
+        satellite_server_url: "https://{{ inventory_hostname }}"
+        satellite_locations: "{{ locations }}"
+      tags: locations

@@ -53,9 +53,9 @@ products:
       - name: Red Hat Enterprise Linux 8 for x86_64 - Supplementary (RPMs)
         releasever: 8
       - name: Red Hat Enterprise Linux 8 for x86_64 - AppStream (Kickstart)
-        releasever: 8.8
+        releasever: 8.9
       - name: Red Hat Enterprise Linux 8 for x86_64 - BaseOS (Kickstart)
-        releasever: 8.8
+        releasever: 8.9
       - name: Red Hat Satellite Client 6 for RHEL 8 x86_64 (RPMs)
       - name: Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)
         releasever: 9
@@ -64,12 +64,13 @@ products:
       - name: Red Hat Enterprise Linux 9 for x86_64 - Supplementary (RPMs)
         releasever: 9
       - name: Red Hat Enterprise Linux 9 for x86_64 - AppStream (Kickstart)
-        releasever: 9.2
+        releasever: 9.3
       - name: Red Hat Enterprise Linux 9 for x86_64 - BaseOS (Kickstart)
-        releasever: 9.2
+        releasever: 9.3
       - name: Red Hat Satellite Client 6 for RHEL 9 x86_64 (RPMs)
       ## Example of how to bring in the Red Hat Satellite Capsule repository
-      - name: Red Hat Satellite Maintenance 6.13 for RHEL 8 x86_64 (RPMs)
+      - name: Red Hat Satellite Maintenance 6.14 for RHEL 8 x86_64 (RPMs)
+      - name: Red Hat Satellite Utils 6.14 for RHEL 8 x86_64 (RPMs)
   - name: "Red Hat CodeReady Linux Builder for x86_64"
     repository_sets:
       - name: "Red Hat CodeReady Linux Builder for RHEL 8 x86_64 (RPMs)"
@@ -84,7 +85,7 @@ products:
   ## Example of how to bring in the Red Hat Satellite Capsule repository
   # - name: Red Hat Satellite Capsule
   #   repository_sets:
-  #     - name: Red Hat Satellite Capsule 6.13 for RHEL 8 x86_64 (RPMs)
+  #     - name: Red Hat Satellite Capsule 6.14 for RHEL 8 x86_64 (RPMs)
   #       basearch: x86_64
   ## RHEL 6 is no longer supported
   ## Example of how to bring in Developer Toolset repos
@@ -155,8 +156,51 @@ products:
 #        url: https://forge.puppetlabs.com
   - name: Red Hat Ansible Automation Platform
     repository_sets:
+      # - name: Red Hat Ansible Automation Platform 2.4 for RHEL 8 x86_64 (RPMs)
       - name: Red Hat Ansible Automation Platform 2.4 for RHEL 9 x86_64 (RPMs)
   ## Example of how to bring in the Red Hat Satellite Capsule repository
   - name: Red Hat Satellite Capsule
     repository_sets:
-      - name: Red Hat Satellite Capsule 6.13 for RHEL 8 x86_64 (RPMs)
+      - name: Red Hat Satellite Capsule 6.14 for RHEL 8 x86_64 (RPMs)
+  # - name: Red Hat Enterprise Linux Server - Extended Life Cycle Support
+  #   repository_sets:
+  #     - name: Red Hat Enterprise Linux 5 Server - Extended Life Cycle Support (RPMs)
+  #       basearch: x86_64
+  #     # - name: Red Hat Enterprise Linux 6 Server - Extended Life Cycle Support - Optional (RPMs)
+  #     #   basearch: i386
+  #     - name: Red Hat Enterprise Linux 6 Server - Extended Life Cycle Support - Optional (RPMs)
+  #       basearch: x86_64
+  #     # - name: Red Hat Enterprise Linux 6 Server - Extended Life Cycle Support (RPMs)
+  #     #   basearch: i386
+  #     - name: Red Hat Enterprise Linux 6 Server - Extended Life Cycle Support (RPMs)
+  #       basearch: x86_64
+  #     - name: Red Hat Satellite Tools 6.8 (for RHEL 5 Server - ELS) (RPMs)
+  #       basearch: x86_64
+  #     # - name: Red Hat Satellite Client 6 (for RHEL 6 Server - ELS) (RPMs)
+  #     #   basearch: i386
+  #     - name: Red Hat Satellite Client 6 (for RHEL 6 Server - ELS) (RPMs)
+  #       basearch: x86_64
+  # - name: Red Hat Enterprise Linux High Availability for x86_64
+  #   repository_sets:
+  #     - name: Red Hat Enterprise Linux 8 for x86_64 - High Availability (RPMs)
+  #       releasever: 8
+  #     - name: Red Hat Enterprise Linux 9 for x86_64 - High Availability (RPMs)
+  #       releasever: 9
+  #     - name: Red Hat Enterprise Linux High Availability (for RHEL 6 Server) (RPMs)
+  #       basearch: x86_64
+  #       releasever: 6Server
+  #     - name: Red Hat Enterprise Linux High Availability (for RHEL 7 Server) (RPMs)
+  #       basearch: x86_64
+  #       releasever: 7Server
+  # - name: Red Hat Enterprise Linux Resilient Storage for x86_64
+  #   repository_sets:
+  #     - name: Red Hat Enterprise Linux Resilient Storage (for RHEL 6 Server) (RPMs)
+  #       basearch: x86_64
+  #       releasever: 6Server
+  #     - name: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) (RPMs)
+  #       basearch: x86_64
+  #       releasever: 7Server
+  #     - name: Red Hat Enterprise Linux 8 for x86_64 - Resilient Storage (RPMs)
+  #       releasever: 8
+  #     - name: Red Hat Enterprise Linux 9 for x86_64 - Resilient Storage (RPMs)
+  #       releasever: 9

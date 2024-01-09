@@ -75,8 +75,8 @@ hostgroups:
     domain: "test.org"
     subnet: "test.org"
     architecture: x86_64
-    operatingsystem: "RHEL 8.8"
-    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.8"
+    operatingsystem: "RHEL 8.9"
+    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.9"
     ptable: "Kickstart default"
     pxe_loader: "PXELinux BIOS"
     ## Example of adding or overriding parameters
@@ -106,8 +106,8 @@ hostgroups:
     domain: "test.org"
     subnet: "test.org"
     architecture: x86_64
-    operatingsystem: "RedHat 9.2"
-    kickstart_repository: "Red Hat Enterprise Linux 9 for x86_64 - BaseOS Kickstart 9.2"
+    operatingsystem: "RedHat 9.3"
+    kickstart_repository: "Red Hat Enterprise Linux 9 for x86_64 - BaseOS Kickstart 9.3"
     ptable: "Kickstart default"
     pxe_loader: "PXELinux BIOS"
     ## Example of adding or overriding parameters
@@ -137,8 +137,8 @@ hostgroups:
     domain: "test.org"
     subnet: "test.org"
     architecture: x86_64
-    operatingsystem: "RHEL 8.8"
-    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.8"
+    operatingsystem: "RHEL 8.9"
+    kickstart_repository: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.9"
     ptable: "Kickstart default"
     pxe_loader: "PXELinux BIOS"
     ## Example of adding or overriding parameters

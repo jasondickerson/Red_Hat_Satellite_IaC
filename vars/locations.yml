@@ -1,0 +1,5 @@
+---
+locations:
+  - name: "{{ satellite_location }}"
+    organizations:
+      - "{{ satellite_organization }}"

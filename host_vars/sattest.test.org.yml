@@ -15,7 +15,14 @@ firewall:
   - service: tftp
     state: enabled
 
-subscription_pool_id: <Your Subscription pool id here>
+subscription_pools:
+  ### To find subscriptions, use subscription-manager command on Satellite to search for the necessary product
+  ### Manifest will need Sat Infra, RHEL Premium, ELS subscriptions
+  ### the ansible module does not like virtual subs so just use physical
+  ###
+  ### subscription-manager list --all --available --matches 'Red Hat Satellite Infrastructure Subscription'
+  - id: <Your Subscription pool id here>
+    quantity: <Your Quantity here>
 
 satellite_installer_scenario: satellite
 satellite_installer_options:
@@ -37,4 +44,5 @@ satellite_installer_options:
   - '--foreman-proxy-tftp-servername {{ inventory_hostname }}'
   - '--foreman-proxy-http true'
   - '--foreman-proxy-templates true'
+  - '--foreman-proxy-registration true'
   - '--register-with-insights'

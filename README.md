@@ -12,7 +12,7 @@ While the code works, this README is a work in progress.  Full instructions will
 
 ## Lab Environment
 
-My test Lab is libvirt on Fedora 38.  I created a subnet 192.168.100.0/24 with DHCP disabled, and NAT forwarding.  The Gateway is 192.168.100.1, and the Satellite is 192.168.100.2.  For the Red Hat Satellite installation, the DHCP pool is the 192.168.100.100 - 150.  I deployed the Red Hat Satellite and subsequent clients into the test.org domain.  I started with a Minimal install of RHEL 8.8, registered to Red Hat Subscription Management on the Internet.  My Red Hat Satellite VM is 4 CPU x 20GB RAM with a single 150GB disk.  Given Red Hat Satellite can take up quite a bit of storage, I went with the following partition layout:
+My test Lab is libvirt on Fedora 38.  I created a subnet 192.168.100.0/24 with DHCP disabled, and NAT forwarding.  The Gateway is 192.168.100.1, and the Satellite is 192.168.100.2.  For the Red Hat Satellite installation, the DHCP pool is the 192.168.100.100 - 150.  I deployed the Red Hat Satellite and subsequent clients into the test.org domain.  I started with a Minimal install of RHEL 8.9, registered to Red Hat Subscription Management on the Internet.  My Red Hat Satellite VM is 4 CPU x 20GB RAM with a single 150GB disk.  Given Red Hat Satellite can take up quite a bit of storage, I went with the following partition layout:
 
 - /boot      1 GB ext4
 - /     139.14 GB ext4
@@ -33,7 +33,7 @@ To use this code, you need to customize the variable files for your needs.  The 
     │       ├── main.yml (set your organization)
     │       └── vault.yml (There are several variables to set according to your needs)
     ├── host_vars
-    │   └── sattest.test.org.yml (Your subscription pool id for your manifest, and satellite installer options)
+    │   └── sattest.test.org.yml (Your list of subscription pool ids and quantities for your manifest, and satellite installer options)
     ├── inventory.yml (Your satellite FQDN must be in the satellites group, adjust the host_vars filename to match as well)
     ├── secret (This file contains your secret to decrypt your ansible vault in plain text)
     └── vars ( all of these files can be used as is, to setup a Standard Operating Environment Red Hat Satellite, but may be customized)
