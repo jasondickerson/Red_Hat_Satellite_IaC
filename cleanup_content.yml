@@ -1,22 +1,20 @@
 ---
 - name: Cleanup Old CV Versions
   hosts: satellites
-  gather_facts: no
-  vars_files:
-    - vars/obsoletes.yml
-
-  roles:
-    - role: redhat.satellite.content_view_version_cleanup
-      vars:
-        satellite_server_url: "https://{{ inventory_hostname }}"
-        satellite_content_view_version_cleanup_keep: 1
+  gather_facts: false
 
   tasks:
+    - name: Remove Old Content View Versions
+      ansible.builtin.import_role:
+        name: redhat.satellite.content_view_version_cleanup
+      vars:
+        satellite_content_view_version_cleanup_keep: 1
+
     - name: Disable Old Repositories
       redhat.satellite.repository_set:
         username: "{{ satellite_username }}"
         password: "{{ satellite_password }}"
-        server_url: "https://{{ inventory_hostname }}"
+        server_url: "{{ satellite_server_url }}"
         organization: "{{ satellite_organization }}"
         state: disabled
         product: "{{ item.0.name }}"
@@ -24,7 +22,4 @@
         repositories:
           - basearch: "{{ item.1.basearch | default(omit) }}"
             releasever: "{{ item.1.releasever | default(omit) }}"
-      with_subelements:
-        - "{{ obsolete_repositories | selectattr('repository_sets', 'defined') | list }}"
-        - repository_sets
-
+      loop: "{{ obsolete_repositories | selectattr('repository_sets', 'defined') | list | subelements('repository_sets') }}"

@@ -1,0 +1,4 @@
+---
+satellite_settings:
+  - name: "default_download_policy"
+    value: "on_demand"

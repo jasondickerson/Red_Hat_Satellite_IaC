@@ -1,0 +1,16 @@
+---
+firewall:
+  - service: RH-Satellite-6
+    state: enabled
+  - service: cockpit
+    state: enabled
+  - service: dhcp
+    state: enabled
+  - service: dhcpv6-client
+    state: enabled
+  - service: dns
+    state: enabled
+  - service: ssh
+    state: enabled
+  - service: tftp
+    state: enabled

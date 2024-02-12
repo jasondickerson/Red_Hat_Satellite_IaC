@@ -1,0 +1,22 @@
+---
+- name: Install Satellite Packages
+  hosts: satellites
+  gather_facts: false
+
+  tasks:
+    - name: Install required packages
+      ansible.builtin.package:
+        name:
+          - satellite
+          - chrony
+          - sos
+          - bash-completion
+          - tree
+          - vim-enhanced
+        state: present
+
+    - name: Download the Satellite 6 Queue Checker script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/jasondickerson/sat6-queue-check/master/sat6-queue-check.bash
+        dest: /root/sat6-queue-check.bash
+        mode: '0750'

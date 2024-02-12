@@ -1,29 +1,4 @@
 ---
-firewall:
-  - service: RH-Satellite-6
-    state: enabled
-  - service: cockpit
-    state: enabled
-  - service: dhcp
-    state: enabled
-  - service: dhcpv6-client
-    state: enabled
-  - service: dns
-    state: enabled
-  - service: ssh
-    state: enabled
-  - service: tftp
-    state: enabled
-
-subscription_pools:
-  ### To find subscriptions, use subscription-manager command on Satellite to search for the necessary product
-  ### Manifest will need Sat Infra, RHEL Premium, ELS subscriptions
-  ### the ansible module does not like virtual subs so just use physical
-  ###
-  ### subscription-manager list --all --available --matches 'Red Hat Satellite Infrastructure Subscription'
-  - id: <Your Subscription pool id here>
-    quantity: <Your Quantity here>
-
 satellite_installer_scenario: satellite
 satellite_installer_options:
   - '--foreman-initial-admin-username {{ satellite_username }}'

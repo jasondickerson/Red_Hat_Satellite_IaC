@@ -1,5 +1,5 @@
 ---
-domains:
+satellite_domains:
   - name: "test.org"
     dns_proxy: "{{ inventory_hostname }}"
     locations:

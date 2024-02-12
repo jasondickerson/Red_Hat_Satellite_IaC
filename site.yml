@@ -1,0 +1,32 @@
+---
+- name: Install Satellite Packages
+  ansible.builtin.import_playbook: install_satellite_packages.yml
+
+- name: Install Satellite
+  ansible.builtin.import_playbook: install_satellite.yml
+
+- name: Manage Manifest
+  ansible.builtin.import_playbook: maintain_manifest.yml
+
+- name: Manage Satellite Settings
+  ansible.builtin.import_playbook: maintain_satellite_settings.yml
+
+- name: Manage Locations
+  ansible.builtin.import_playbook: maintain_locations.yml
+
+- name: Manage Repositories
+  ansible.builtin.import_playbook: maintain_repositories.yml
+
+- name: Manage Sync Plans
+  ansible.builtin.import_playbook: maintain_sync_plans.yml
+
+- name: Manage Content Views
+  ansible.builtin.import_playbook: maintain_content.yml
+
+- name: Manage Activation Keys
+  ansible.builtin.import_playbook: maintain_activation_keys.yml
+
+## Capsule Installation
+
+- name: Manage Provisioning
+  ansible.builtin.import_playbook: maintain_provisioning.yml

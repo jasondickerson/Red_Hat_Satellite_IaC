@@ -1,13 +1,12 @@
 ---
-- name: Maintain Activation Keys
+- name: Manage Activation Keys
   hosts: satellites
   gather_facts: false
-  vars_files:
-    - vars/actkeys.yml
+  tags:
+    - actkeys
+    - satconfig
 
-  roles:
-    - role: redhat.satellite.activation_keys
-      vars:
-        satellite_server_url: "https://{{ inventory_hostname }}"
-        satellite_activation_keys: "{{ activation_keys }}"
-      tags: actkeys
+  tasks:
+    - name: Manage Activation Keys
+      ansible.builtin.import_role:
+        name: redhat.satellite.activation_keys

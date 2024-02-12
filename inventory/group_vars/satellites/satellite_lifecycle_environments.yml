@@ -1,5 +1,5 @@
 ---
-lifecycles:
+satellite_lifecycle_environments:
   - name: DEV6
     prior: Library
   - name: DEV7

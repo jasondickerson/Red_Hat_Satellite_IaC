@@ -1,5 +1,5 @@
 ---
-activation_keys:
+satellite_activation_keys:
   ## RHEL 6 is no longer supported
   # - name: "RHEL6-DEV-AK"
   #   lifecycle_environment: "DEV6"

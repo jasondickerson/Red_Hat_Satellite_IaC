@@ -1,5 +1,5 @@
 ---
-subnets:
+satellite_subnets:
 #   - name: "test.org_static"
 #     description: ""
 #     network_type: "IPv4"

@@ -1,5 +1,5 @@
 ---
-products:
+satellite_products:
   - name: Red Hat Software Collections (for RHEL Server)
     repository_sets:
       ## RHEL 6 is no longer supported
