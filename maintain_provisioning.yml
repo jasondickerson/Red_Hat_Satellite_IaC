@@ -1,87 +1,39 @@
 ---
-- name: Maintain Satellite Provisioning Configuration
+- name: Manage Provisioning
   hosts: satellites
-  gather_facts: no
-  vars_files:
-    - vars/domains.yml
-    - vars/subnets.yml
-    - vars/hostgroups.yml
+  gather_facts: false
+  tags:
+    - satconfig
+    - provision
 
   tasks:
     - name: Manage Domains
-      redhat.satellite.domain:
-        server_url: "https://{{ inventory_hostname }}"
-        username: "{{ satellite_username }}"
-        password: "{{ satellite_password }}"
-        name: "{{ item.name }}"
-        dns_proxy: "{{ item.dns_proxy | default(omit) }}"
-        locations: "{{ item.locations }}"
-        organizations: "{{ item.organizations }}"
-        state: present
-      loop: "{{ domains }}"
-      tags: domains,provision
+      ansible.builtin.import_role:
+        name: redhat.satellite.domains
+      tags:
+        - domains
 
     - name: Manage Subnets
-      redhat.satellite.subnet:
-        server_url: "https://{{ inventory_hostname }}"
-        username: "{{ satellite_username }}"
-        password: "{{ satellite_password }}"
-        name: "{{ item.name }}"
-        description: "{{ item.description }}"
-        network_type: "{{ item.network_type }}"
-        dns_primary:  "{{ item.dns_primary }}"
-        dns_secondary: "{{ item.dns_secondary }}"
-        domains: "{{ item.domains }}"
-        gateway: "{{ item.gateway }}"
-        network: "{{ item.network }}"
-        cidr: "{{ item.cidr }}"
-        mask: "{{ item.mask }}"
-        from_ip: "{{ item.from_ip }}"
-        to_ip: "{{ item.to_ip }}"
-        boot_mode: "{{ item.boot_mode }}"
-        ipam: "{{ item.ipam }}"
-        dhcp_proxy: "{{ item.dhcp_proxy | default(omit) }}"
-        httpboot_proxy: "{{ item.httpboot_proxy | default(omit) }}"
-        tftp_proxy: "{{ item.tftp_proxy | default(omit) }}"
-        discovery_proxy: "{{ item.discovery_proxy | default(omit) }}"
-        dns_proxy: "{{ item.dns_proxy | default(omit) }}"
-        template_proxy: "{{ item.template_proxy | default(omit) }}"
-        remote_execution_proxies: "{{ item.remote_execution_proxies }}"
-        externalipam_proxy: "{{ item.externalipam_proxy }}"
-        externalipam_group: "{{ item.externalipam_group | default(omit) }}"
-        vlanid: "{{ item.vlanid | default(omit) }}"
-        mtu: "{{ item.mtu }}"
-        organizations: "{{ item.organizations }}"
-        locations: "{{ item.locations }}"
-        state: present
-      loop: "{{ subnets }}"
-      tags: subnets,provision
+      ansible.builtin.import_role:
+        name: redhat.satellite.subnets
+      tags:
+        - subnets
 
-    - name: Manage Host Groups
+    - name: Manage Hostgroups
+      ansible.builtin.import_role:
+        name: redhat.satellite.hostgroups
+      tags:
+        - hostgroups
+
+    - name: Set Default Root Password for Hostgroups
       redhat.satellite.hostgroup:
         username: "{{ satellite_username }}"
         password: "{{ satellite_password }}"
-        server_url: "https://{{ inventory_hostname }}"
+        server_url: "{{ satellite_server_url }}"
         organization: "{{ satellite_organization }}"
         name: "{{ item.name }}"
-        lifecycle_environment: "{{ item.lifecycle_environment }}"
-        content_view: "{{ item.content_view }}"
-        content_source: "{{ item.content_source }}"
-        environment: "{{ item.environment | default(omit) }}"
-        puppet_proxy: "{{ item.puppet_proxy | default(omit) }}"
-        puppet_ca_proxy: "{{ item.puppet_ca_proxy | default(omit) }}"
-        openscap_proxy: "{{ item.openscap_proxy }}"
-        domain: "{{ item.domain }}"
-        subnet: "{{ item.subnet }}"
-        architecture: "{{ item.architecture }}"
-        operatingsystem: "{{ item.operatingsystem }}"
-        kickstart_repository: "{{ item.kickstart_repository }}"
-        ptable: "{{ item.ptable }}"
-        pxe_loader: "{{ item.pxe_loader }}"
-        parameters: "{{ item.parameters | default(omit) }}"
-        locations: "{{ item.locations }}"
-        activation_keys: "{{ item.activation_keys }}"
+        root_pass: "{{ hostgroup_default_root_password }}"
         state: present
-      loop: "{{ hostgroups }}"
-      tags: hostgroups,provision
-
+      loop: "{{ satellite_hostgroups }}"
+      tags:
+        - setrootpw

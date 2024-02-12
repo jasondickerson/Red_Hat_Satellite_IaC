@@ -1,5 +1,5 @@
 ---
-sync_plans:
+satellite_sync_plans:
   - name: Sync All
     description: "Sync All repositories"
     enabled: false

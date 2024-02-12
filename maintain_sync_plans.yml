@@ -1,12 +1,12 @@
 ---
-- name: Manage Locations
+- name: Manage Sync Plans
   hosts: satellites
   gather_facts: false
   tags:
+    - syncplans
     - satconfig
-    - locations
 
   tasks:
-    - name: Manage Locations
+    - name: Manage Sync Plans
       ansible.builtin.import_role:
-        name: redhat.satellite.locations
+        name: redhat.satellite.sync_plans

@@ -1,0 +1,32 @@
+---
+- name: Maintain Satellite Manifest
+  hosts: satellites
+  gather_facts: false
+
+  tasks:
+    - name: Manage manifest
+      redhat.satellite.redhat_manifest:
+        name: "{{ inventory_hostname }}"
+        username: "{{ red_hat_portal_username }}"
+        password: "{{ red_hat_portal_password }}"
+        content_access_mode: org_environment
+        pool_id: "{{ item.id }}"
+        quantity: "{{ item.quantity }}"
+        path: "/root/{{ inventory_hostname }}_manifest.zip"
+      loop: "{{ subscription_pools }}"
+      register: manifest
+
+    - name: Store Manifest UUID
+      ansible.builtin.copy:
+        content: "{{ manifest.results[0].uuid }}"
+        dest: "/root/{{ inventory_hostname }}_manifest_uuid.txt"
+        mode: '0640'
+
+    - name: "Upload the manifest"
+      redhat.satellite.subscription_manifest:
+        username: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        server_url: "{{ satellite_server_url }}"
+        organization: "{{ satellite_organization }}"
+        state: present
+        manifest_path: "/root/{{ inventory_hostname }}_manifest.zip"

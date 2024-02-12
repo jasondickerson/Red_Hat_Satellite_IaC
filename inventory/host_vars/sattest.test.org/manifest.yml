@@ -1,0 +1,9 @@
+---
+subscription_pools:
+  ### To find subscriptions, use subscription-manager command on Satellite to search for the necessary product
+  ### Manifest will need Sat Infra, RHEL Premium, ELS subscriptions
+  ### the ansible module does not like virtual subs so just use physical
+  ###
+  ### subscription-manager list --all --available --matches 'Red Hat Satellite Infrastructure Subscription'
+  - id: <Your Subscription pool id here>
+    quantity: <Your Quantity here>

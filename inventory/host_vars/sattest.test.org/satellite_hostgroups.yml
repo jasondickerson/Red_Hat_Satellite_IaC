@@ -1,5 +1,5 @@
 ---
-hostgroups:
+satellite_hostgroups:
 ## RHEL 6 is no longer supported
 #   - name: RHEL6DEVHG
 #     lifecycle_environment: DEV6
@@ -31,6 +31,7 @@ hostgroups:
 #     locations:
 #       - "{{ satellite_location }}"
 #     activation_keys: "RHEL6-DEV-AK"
+#     organization: "{{ satellite_organization }}"
 
   - name: RHEL7DEVHG
     lifecycle_environment: DEV7
@@ -62,6 +63,7 @@ hostgroups:
     locations:
       - "{{ satellite_location }}"
     activation_keys: "RHEL7-DEV-AK"
+    organization: "{{ satellite_organization }}"
 
   - name: RHEL8DEVHG
     lifecycle_environment: DEV8
@@ -93,6 +95,7 @@ hostgroups:
     locations:
       - "{{ satellite_location }}"
     activation_keys: "RHEL8-DEV-AK"
+    organization: "{{ satellite_organization }}"
 
   - name: RHEL9DEVHG
     lifecycle_environment: DEV9
@@ -124,6 +127,7 @@ hostgroups:
     locations:
       - "{{ satellite_location }}"
     activation_keys: "RHEL9-DEV-AK"
+    organization: "{{ satellite_organization }}"
 
   - name: CapsulesHG
     lifecycle_environment: DEV8
@@ -155,3 +159,4 @@ hostgroups:
     locations:
       - "{{ satellite_location }}"
     activation_keys: "Capsules-AK"
+    organization: "{{ satellite_organization }}"

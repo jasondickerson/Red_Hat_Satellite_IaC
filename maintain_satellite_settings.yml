@@ -1,0 +1,11 @@
+---
+- name: Configure Satellite Settings
+  hosts: satellites
+  gather_facts: false
+  tags:
+    - satconfig
+
+  tasks:
+    - name: Configure Satellite Settings
+      ansible.builtin.import_role:
+        name: redhat.satellite.settings
