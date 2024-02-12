@@ -152,10 +152,10 @@ Run "sat_prep.bash".  The script will do the following:
 2. Enable the Satellite EL8 module
 3. Clear the DNF/YUM cache
 4. Install the following:
-    1. ansible-core
-    2. RHEL System Roles
-    3. redhat.satellite ansible collection
-    4. redhat.satellite_operations ansible collection
+    - ansible-core
+    - RHEL System Roles
+    - redhat.satellite ansible collection
+    - redhat.satellite_operations ansible collection
 5. Perform a full system update
 6. Report if a Reboot is required.
 
