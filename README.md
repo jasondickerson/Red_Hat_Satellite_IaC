@@ -140,58 +140,71 @@ All other files may be customized to your particular use case.
 
 ### Running the automation
 
-1. Ensure your RHEL 8 server is registered to Red Hat Subscription Management and has access to a Satellite Infrastructure Subscription.  
-2. Run "sat_prep.bash".  The script will do the following:
-    1. Disable all but the necessary repositories for the Satellite installation.
-    2. Enable the Satellite EL8 module
-    3. Clear the DNF/YUM cache
-    4. Install the following:
-        1. ansible-core
-        2. RHEL System Roles
-        3. redhat.satellite ansible collection
-        4. redhat.satellite_operations ansible collection
-    5. Perform a full system update
-    6. Report if a Reboot is required.
-3. If necessary, reboot.
-4. Run "ansible-playbook site.yml" The following actions will be performed:
-    1. Install the following (Some are optional but help to maintain code):
-        - satellite (rpm packages)
-        - chrony
-        - sos
-        - bash-completion
-        - tree
-        - vim-enhanced
-    2. Download the sat6-queue-check.bash script
-        - This is a script I wrote to help find where Satellite 6 was getting "clogged" on very large satellite installations.
-    3. Configure firewalld appropriately for a provisioning Red Hat Satellite.
-    4. Run the Satellite Installation
-    5. Create a manifest file for the Red Hat Satellite
-        - Stored in /root
-    6. Store the UUID of the Manifest file
-        - Stored in a text file in /root
-    7. Upload the manifest into Satellite
-    8. Set Satellite Settings as appropriate
-        - Set Default Download Policy to on_demand
-            - This saves a ton of disk space!
-    9. Create non-default Satellite Locations
-    10. Refresh the manifest
-        - This can be needed for normal maintenance, so I left it in for future day 2 operations.
-    11. Manage GPG keys for Repositories
-    12. Enable the required Red Hat Repositories and any custom repositories
-        - Custom repositories can include EPEL or in house created repositories
-        - Note: the use of EPEL on production systems is not recommended, use it at your own risk.
-    13. Sync the repository content
-        - With the Default Download Policy set to on_demand, this will only download repository metadata, and create repository metadata internal to Satellite.  RPM's are downloaded to Satellite as clients request them.
-    14. Create a Sync Plan
-    15. Create Lifecycle Environments
+#### Register the Satellties to Red Hat Subscription Management
 
-    16. Create Content Views
-    17. Publish Content Views and publish them to Lifecycle Environments
-    18. Create Activation Keys
-    19. Create Domains
-    20. Create Subnets
-    21. Create Hostgroups
-    22. Set the Default root password for systems created by Hostgroups.  
+Ensure your RHEL 8 server is registered to Red Hat Subscription Management and has access to a Satellite Infrastructure Subscription.  
+
+#### Prepare the Ansible Control Node (Satellite) to run the playbook
+
+Run "sat_prep.bash".  The script will do the following:
+
+1. Disable all but the necessary repositories for the Satellite installation.
+2. Enable the Satellite EL8 module
+3. Clear the DNF/YUM cache
+4. Install the following:
+    1. ansible-core
+    2. RHEL System Roles
+    3. redhat.satellite ansible collection
+    4. redhat.satellite_operations ansible collection
+5. Perform a full system update
+6. Report if a Reboot is required.
+
+If necessary, reboot.
+
+#### Run the playbook
+
+Run "ansible-playbook site.yml" The following actions will be performed:
+
+1. Install the following (Some are optional but help to maintain code):
+    - satellite (rpm packages)
+    - chrony
+    - sos
+    - bash-completion
+    - tree
+    - vim-enhanced
+2. Download the sat6-queue-check.bash script
+    - This is a script I wrote to help find where Satellite 6 was getting "clogged" on very large satellite installations.
+3. Configure firewalld appropriately for a provisioning Red Hat Satellite.
+4. Run the Satellite Installation
+5. Create a manifest file for the Red Hat Satellite
+    - Stored in /root
+6. Store the UUID of the Manifest file
+    - Stored in a text file in /root
+7. Upload the manifest into Satellite
+8. Set Satellite Settings as appropriate
+    - Set Default Download Policy to on_demand
+        - This saves a ton of disk space!
+9. Create non-default Satellite Locations
+10. Refresh the manifest
+    - This can be needed for normal maintenance, so I left it in for future day 2 operations.
+11. Manage GPG keys for Repositories
+12. Enable the required Red Hat Repositories and any custom repositories
+    - Custom repositories can include EPEL or in house created repositories
+    - Note: the use of EPEL on production systems is not recommended, use it at your own risk.
+13. Sync the repository content
+    - With the Default Download Policy set to on_demand, this will only download repository metadata, and create repository metadata internal to Satellite.  RPM's are downloaded to Satellite as clients request them.
+14. Create a Sync Plan
+15. Create Lifecycle Environments
+
+16. Create Content Views
+17. Publish Content Views and publish them to Lifecycle Environments
+18. Create Activation Keys
+19. Create Domains
+20. Create Subnets
+21. Create Hostgroups
+22. Set the Default root password for systems created by Hostgroups.  
+
+#### Summary
 
 This covers all of the installation and configuration playbooks.  After all of this, your Satellite is ready to PXE Provision BIOS based systems!  
 
