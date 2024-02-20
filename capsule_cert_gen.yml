@@ -1,5 +1,6 @@
 ---
-- hosts: satellites
+- name: Generate Capsule Certificate Bundles
+  hosts: satellites
   gather_facts: false
 
   tasks:
@@ -15,5 +16,4 @@
       vars:
         satellite_capsule_certs_generate_fqdn: "{{ item }}"
       loop: "{{ satellite_capsules }}"
-      when: not ( item + '.tar.gz' in capsule_certs.files | map(attribute='path') | list )
-
+      when: not (item + '.tar.gz' in capsule_certs.files | map(attribute='path') | list)

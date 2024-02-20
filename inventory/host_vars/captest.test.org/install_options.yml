@@ -14,4 +14,3 @@ satellite_installer_options:
   - '--foreman-proxy-tftp true'
   - '--foreman-proxy-tftp-managed true'
   - '--foreman-proxy-tftp-servername "{{ inventory_hostname }}"'
-

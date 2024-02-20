@@ -1,5 +1,6 @@
 ---
-- hosts: capsules
+- name: Install Capsule
+  hosts: capsules
   gather_facts: false
 
   tasks:
@@ -35,4 +36,3 @@
     - name: Run Capsule Installer
       ansible.builtin.import_role:
         name: redhat.satellite_operations.installer
-      

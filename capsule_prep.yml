@@ -1,5 +1,6 @@
 ---
-- hosts: capsules
+- name: Prepare Capsule for Installation
+  hosts: capsules
   gather_facts: false
 
   tasks:
@@ -11,10 +12,13 @@
       tags:
         - fetch_cert
 
-    -  name: Deploy Capsule Cert Bundle
-       ansible.builtin.copy:
+    - name: Deploy Capsule Cert Bundle
+      ansible.builtin.copy:
         src: "/tmp/{{ inventory_hostname }}/root/{{ inventory_hostname }}.tar.gz"
         dest: "/root/{{ inventory_hostname }}.tar.gz"
+        owner: root
+        group: root
+        mode: '0640'
 
     - name: Remove Capsule Cert Bundle Local Copy
       ansible.builtin.file:
@@ -82,4 +86,3 @@
 
         - name: Wait for Capsule to come up
           ansible.builtin.wait_for_connection:
-

@@ -1,9 +1,10 @@
 ---
-- hosts: capsules
+- name: Configure Capsule Content
+  hosts: capsules
   gather_facts: false
 
   tasks:
-    - name: 
+    - name: Configure Capsule Content
       redhat.satellite.smart_proxy:
         username: "{{ hostvars[satellite_hostname]['satellite_username'] }}"
         password: "{{ hostvars[satellite_hostname]['satellite_password'] }}"
@@ -16,4 +17,3 @@
         download_policy: on_demand
         validate_certs: true
         state: present
-

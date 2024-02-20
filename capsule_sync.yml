@@ -1,5 +1,6 @@
 ---
-- hosts: satellites
+- name: Synchronize capsule_certs
+  hosts: satellites
   gather_facts: false
 
   tasks:
@@ -24,5 +25,4 @@
         force_basic_auth: true
         body_format: json
         status_code: 202
-      loop: "{{ capsule_info.json.results | selectattr( 'name', '!=', inventory_hostname ) | map(attribute='id') | list }}"
-
+      loop: "{{ capsule_info.json.results | selectattr('name', '!=', inventory_hostname) | map(attribute='id') | list }}"

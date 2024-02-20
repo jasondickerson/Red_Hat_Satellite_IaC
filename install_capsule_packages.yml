@@ -1,5 +1,6 @@
 ---
-- hosts: capsules
+- name: Install Capsule Packages
+  hosts: capsules
   gather_facts: false
 
   tasks:
@@ -19,4 +20,3 @@
         url: https://raw.githubusercontent.com/jasondickerson/sat6-queue-check/master/sat6-queue-check.bash
         dest: /root/sat6-queue-check.bash
         mode: '0750'
-
