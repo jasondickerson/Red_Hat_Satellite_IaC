@@ -1,0 +1,13 @@
+---
+capsule_organizations:
+  - 'Default Organization'
+
+capsule_locations:
+  - 'Default Location'
+
+capsule_lifecycle_environments:
+  - DEV6
+  - DEV7
+  - DEV8
+  - DEV9
+

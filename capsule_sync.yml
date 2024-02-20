@@ -1,0 +1,28 @@
+---
+- hosts: satellites
+  gather_facts: false
+
+  tasks:
+    - name: Get Capsule Info
+      ansible.builtin.uri:
+        url: "{{ satellite_server_url }}/katello/api/capsules"
+        user: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        method: GET
+        force_basic_auth: true
+        body_format: json
+        body:
+          full_result: true
+      register: capsule_info
+
+    - name: Synchronize Capsules
+      ansible.builtin.uri:
+        url: "{{ satellite_server_url }}/katello/api/capsules/{{ item }}/content/sync"
+        user: "{{ satellite_username }}"
+        password: "{{ satellite_password }}"
+        method: POST
+        force_basic_auth: true
+        body_format: json
+        status_code: 202
+      loop: "{{ capsule_info.json.results | selectattr( 'name', '!=', inventory_hostname ) | map(attribute='id') | list }}"
+

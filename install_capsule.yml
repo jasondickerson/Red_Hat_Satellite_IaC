@@ -1,0 +1,38 @@
+---
+- hosts: capsules
+  gather_facts: false
+
+  tasks:
+    - name: Configure Capsule Firewall Rules
+      ansible.builtin.import_role:
+        name: redhat.rhel_system_roles.firewall
+      tags:
+        - firewall
+
+    - name: Get Settings.yaml variables
+      ansible.builtin.include_vars:
+        file: /etc/foreman/settings.yaml
+        name: settings_yaml
+      delegate_to: "{{ satellite_hostname }}"
+
+    - name: Set OAuth Variables
+      ansible.builtin.set_fact:
+        oauth_key: "{{ settings_yaml[':oauth_consumer_key'] }}"
+        oauth_secret: "{{ settings_yaml[':oauth_consumer_secret'] }}"
+
+    - name: Display Installer Options
+      ansible.builtin.debug:
+        var: satellite_installer_options
+
+    - name: Write Capsule OAuth Variable File
+      ansible.builtin.template:
+        src: templates/oauth.yml.j2
+        dest: "inventory/host_vars/{{ item }}/oauth.yml"
+        mode: '0640'
+      loop: "{{ satellite_capsules }}"
+      delegate_to: localhost
+
+    - name: Run Capsule Installer
+      ansible.builtin.import_role:
+        name: redhat.satellite_operations.installer
+      

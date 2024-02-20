@@ -1,0 +1,19 @@
+---
+- hosts: capsules
+  gather_facts: false
+
+  tasks:
+    - name: 
+      redhat.satellite.smart_proxy:
+        username: "{{ hostvars[satellite_hostname]['satellite_username'] }}"
+        password: "{{ hostvars[satellite_hostname]['satellite_password'] }}"
+        server_url: "{{ hostvars[satellite_hostname]['satellite_server_url'] }}"
+        name: "{{ inventory_hostname }}"
+        url: "https://{{ inventory_hostname }}:9090"
+        organizations: "{{ capsule_organizations }}"
+        locations: "{{ capsule_locations }}"
+        lifecycle_environments: "{{ capsule_lifecycle_environments }}"
+        download_policy: on_demand
+        validate_certs: true
+        state: present
+

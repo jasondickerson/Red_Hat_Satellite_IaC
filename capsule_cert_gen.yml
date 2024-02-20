@@ -1,0 +1,19 @@
+---
+- hosts: satellites
+  gather_facts: false
+
+  tasks:
+    - name: Detect Capsule Certs
+      ansible.builtin.find:
+        paths: ./
+        patterns: '*.tar.gz'
+      register: capsule_certs
+
+    - name: Generate Capsule Certificates
+      ansible.builtin.include_role:
+        name: redhat.satellite_operations.capsule_certs_generate
+      vars:
+        satellite_capsule_certs_generate_fqdn: "{{ item }}"
+      loop: "{{ satellite_capsules }}"
+      when: not ( item + '.tar.gz' in capsule_certs.files | map(attribute='path') | list )
+

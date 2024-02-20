@@ -1,0 +1,85 @@
+---
+- hosts: capsules
+  gather_facts: false
+
+  tasks:
+    - name: Retrieve Capsule Cert Bundle
+      ansible.builtin.fetch:
+        src: "/root/{{ inventory_hostname }}.tar.gz"
+        dest: "/tmp"
+      delegate_to: "{{ satellite_hostname }}"
+      tags:
+        - fetch_cert
+
+    -  name: Deploy Capsule Cert Bundle
+       ansible.builtin.copy:
+        src: "/tmp/{{ inventory_hostname }}/root/{{ inventory_hostname }}.tar.gz"
+        dest: "/root/{{ inventory_hostname }}.tar.gz"
+
+    - name: Remove Capsule Cert Bundle Local Copy
+      ansible.builtin.file:
+        path: "/tmp/{{ inventory_hostname }}"
+        state: absent
+      delegate_to: localhost
+
+    - name: Generate registration command
+      redhat.satellite.registration_command:
+        username: "{{ hostvars[satellite_hostname]['satellite_username'] }}"
+        password: "{{ hostvars[satellite_hostname]['satellite_password'] }}"
+        server_url: "{{ hostvars[satellite_hostname]['satellite_server_url'] }}"
+        activation_keys:
+          - Capsules-AK
+        hostgroup: CapsulesHG
+        insecure: true
+        organization: "{{ capsule_organization }}"
+        location: "{{ capsule_location }}"
+        setup_insights: true
+        validate_certs: false
+        force: true
+      register: registration_command
+
+    - name: Perform registration
+      ansible.builtin.shell:
+        cmd: |
+          set -o pipefail
+          {{ registration_command.registration_command }}
+
+    - name: Enable only Capsule repositories
+      redhat.rhel_system_roles.rhsm_repository:
+        name:
+          - rhel-8-for-x86_64-baseos-rpms
+          - rhel-8-for-x86_64-appstream-rpms
+          - satellite-capsule-6.14-for-rhel-8-x86_64-rpms
+          - satellite-maintenance-6.14-for-rhel-8-x86_64-rpms
+        purge: true
+
+    - name: Enable Capsule Module
+      ansible.builtin.shell:
+        cmd: dnf -y module enable satellite-capsule:el8
+      tags:
+        - module
+
+#    - name: Enable Capsule Module
+#      ansible.builtin.dnf:
+#        name: '@satellite-capsule:el8'
+#        state: present
+
+    - name: Clear Package Cache
+      ansible.builtin.shell:
+        cmd: dnf clean all && rm -rf /var/cache/yum/*
+
+    - name: Update OS
+      ansible.builtin.package:
+        name: '*'
+        state: latest
+      register: os_patch
+
+    - name: Reboot if needed
+      when: os_patch.changed
+      block:
+        - name: Reboot to Ensure Updates from registration are active
+          ansible.builtin.reboot:
+
+        - name: Wait for Capsule to come up
+          ansible.builtin.wait_for_connection:
+

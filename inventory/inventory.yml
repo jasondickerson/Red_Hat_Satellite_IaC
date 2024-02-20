@@ -7,3 +7,5 @@ all:
           ansible_connection: local
     capsules:
       hosts:
+        captest.test.org:
+

@@ -1,0 +1,17 @@
+---
+satellite_installer_scenario: capsule
+satellite_installer_options:
+  - '--certs-tar-file "/root/{{ inventory_hostname }}.tar.gz"'
+  - '--foreman-proxy-register-in-foreman "true"'
+  - '--foreman-proxy-foreman-base-url "https://{{ satellite_hostname }}"'
+  - '--foreman-proxy-trusted-hosts "{{ satellite_hostname }}"'
+  - '--foreman-proxy-trusted-hosts "{{ inventory_hostname }}"'
+  - '--foreman-proxy-oauth-consumer-key "{{ oauth_key }}"'
+  - '--foreman-proxy-oauth-consumer-secret "{{ oauth_secret }}"'
+  - '--enable-foreman-proxy-plugin-discovery'
+  - '--enable-foreman-proxy-plugin-ansible'
+  - '--enable-foreman-proxy-plugin-openscap'
+  - '--foreman-proxy-tftp true'
+  - '--foreman-proxy-tftp-managed true'
+  - '--foreman-proxy-tftp-servername "{{ inventory_hostname }}"'
+
