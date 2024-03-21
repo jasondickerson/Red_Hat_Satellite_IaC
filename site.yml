@@ -26,7 +26,27 @@
 - name: Manage Activation Keys
   ansible.builtin.import_playbook: maintain_activation_keys.yml
 
-## Capsule Installation
+## Begin Capsule Installation
+
+- name: Generate Capsule Certificates
+  ansible.builtin.import_playbook: capsule_cert_gen.yml
+
+- name: Prepare Capsule for Installation
+  ansible.builtin.import_playbook: capsule_prep.yml
+
+- name: Install Capsule Packages
+  ansible.builtin.import_playbook: install_capsule_packages.yml
+
+- name: Install Capsule
+  ansible.builtin.import_playbook: install_capsule.yml
+
+- name: Maintain Capsule Content
+  ansible.builtin.import_playbook: maintain_capsule.yml
+
+- name: Sync Capsule
+  ansible.builtin.import_playbook: capsule_sync.yml
+
+## End Capsule Installation
 
 - name: Manage Provisioning
   ansible.builtin.import_playbook: maintain_provisioning.yml
